@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+
+  <link rel="stylesheet" href="registrationForm.css">
+</head>
+<body>
+    
+  <div class="form-container">
+    <form id="registration-form">
+      <h2>Register</h2>
+      <div class="input-Control">
+        <div class="formR1">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+          <div id="lnameError">Please enter your last name.</div>
+        </div>
+        
+
+        <div class="formR1">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+          <div id="fnameError">Please enter your first name.</div>
+        </div>
+      </div>
+
+      <div class="input-Control">
+        <div class="formR2">
+          <label for="age">Age</label>
+          <input type="number" id="ages" name="age" placeholder="Enter your age" required>
+          <div id="ageError">Please enter a valid age number.</div>
+        </div>
+
+        <div class="formR2">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" placeholder="Enter your email" required>
+          <div id="emailError">Please enter valid email.</div>
+        </div>
+      </div>
+
+      <div class="input-Control">
+        <div class="formR3">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <div id="passwordError">Please enter your password.</div>
+        </div>
+
+        <div class="formR3">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+          <div id="confirmpassError">Password do not match, please try again.</div>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <button type="submit" class="subMit">Submit</button>
+        <button type="reset" class="cleaR" onclick="clearDaForm()">Clear</button>
+      </div>
+    </form>
+  </div>
+  <script src="registrationForm.js"></script>
+</body>
+</html>

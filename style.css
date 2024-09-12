@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Calibri', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #253C59;
+}
+
+.navbar {
+    width: auto;
+    margin: auto;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #081826;
+}
+
+.logo {
+    width: 85px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.navbar ul li {
+    font-weight: bold;
+    list-style: none;
+    display: inline-block;
+    margin: 15px 20px;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.navbar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #72a5e2;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: 0.2s;
+}
+
+.navbar ul li:hover::after {
+    width: 100%;
+}
+
+.navbar h3 {
+    color: #fff;
+    margin-left: 20px;
+    flex: 1;
+    text-align: left;
+}
+
+.bTTn {
+    color: #fff;
+    background-color: #1b59a5; 
+    border-radius: 25px;
+    border: #1b59a5 solid;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+.section1 {
+    text-align: center;
+    color: #ffffff;
+    background-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.90) 100%), url(cover.jpg);
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 85px;
+    width: auto;
+    height: 383px;
+}
+
+.bttn {
+    margin: 15px;
+    padding: 15px;
+}
+
+.bttN {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+}
+
+.section1 h1 {
+    font-size: 70px;
+    margin: 35px;
+}
+
+.section1 p {
+    margin: auto;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.section2 {
+    width: auto;
+    padding: 50px;
+    background-color: #253C59;
+    color: #fff;
+}
+
+.sectionHeader {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.sectionHeader h1 {
+    font-size: 50px;
+}
+
+.sectionHeader p {
+    font-size: 25px;
+}
+
+.sectionimage img {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+    margin: auto;
+}
+
+.textboxContainer {
+    display: flex;
+    
+    justify-content: space-between;
+    margin: 35px 0;
+}
+
+.textbox1, .textbox2 {
+    border: #fff solid;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 25px;
+    width: 45%;
+    height: 230px;
+    transition: 100ms all;
+    transform-origin: center;
+    box-shadow: 0 5px 12px black;
+}
+
+.textbox1:hover, .textbox2:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+.textbox1 h2, .textbox2 h2 {
+    font-size: 30px;
+    margin: 15px;
+    font-weight: bold;
+}
+
+.textbox1 p, .textbox2 p {
+    margin: 15px;
+    font-weight: 500;
+}
+
+.section3 {
+    width: auto;
+    height: 550px;
+    text-align: center;
+    color: #fff;
+    padding: 50px;
+    background-color: #253C59;
+}
+
+.sectionHeader2 h1 {
+    font-size: 50px;
+    margin: 20px;
+    padding-top: 15px;
+}
+
+.sectionHeader2 h4 {
+    margin: 20px;
+    font-weight: 100;
+}
+
+.textBoxcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    margin: 25px 0;
+    justify-content: space-around;
+    color: #000;
+}
+
+.container1, .container2, .container3 {
+    background-color: #fff;
+    margin: 10px;
+    padding: 0;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 25px;
+    border: #fff solid;
+    transition: 100ms all;
+    transform-origin: center;
+    box-shadow: 0 5px 12px black;
+}
+
+.container1:hover, .container2:hover, .container3:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+.container1 h4, .container2 h4, .container3 h4 {
+    text-align: justify;
+    padding: 15px;
+}
+
+.container1 p, .container2 p, .container3 p {
+    text-align: justify;
+    padding: 15px;
+}
+
+footer {
+    margin: auto;
+    color: #fff;
+    padding: 35px;
+    background-color: #232525;
+    display: flex;
+    justify-content: space-around;
+}
+
+.flexcontainer, .flexcontainer2, .flexcontainer3 {
+    margin: 5px;
+}
+
+.flexcontainer2 a, .flexcontainer3 a {
+    color: #fff;
+}
+
+.flexcontainer2 {
+    text-align: center;
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* Centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 350px; /* Maximum width for larger screens */
+}
+
+.close {
+    color: #7e7a7a;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #0044CC;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #9db1d8;
+}
+body.h1{
+ color: white;
+ display: flex;
+}
+
+
+

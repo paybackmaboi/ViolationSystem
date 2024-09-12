@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        .btn-secondary {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+        #programContent, #academicYearContent {
+            display: none;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dashboard</h1>
+    <nav>
+        <button id="programMenu" class="btn btn-primary">Program</button>
+        <button id="academicYearMenu" class="btn btn-primary">Academic Year</button>
+    </nav>
+
+    <!-- Program Content -->
+    <div id="programContent">
+        <h2>Program</h2>
+        <table id="programTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Program Code</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic content will be added here -->
+            </tbody>
+        </table>
+        <button id="addNew" class="btn btn-primary">Add New Program</button>
+    </div>
+
+    <!-- Academic Year Content -->
+    <div id="academicYearContent">
+        <h2>Academic Year</h2>
+        <table id="academicYearTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>AY CODE</th>
+                    <th>YEAR FROM</th>
+                    <th>YEAR TO</th>
+                    <th>SEMESTER</th>
+                    <th>STATUS</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="academicYearTableBody">
+                <!-- Dynamic content will be added here -->
+            </tbody>
+        </table>
+        <button id="createNew" class="btn btn-primary">Create New</button>
+        <button id="close" class="btn btn-secondary">Close</button>
+    </div>
+
+    <!-- Program Modal -->
+    <div id="programModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Program</h2>
+            <label for="pcode">Program Code:</label>
+            <input type="text" id="pcode"><br><br>
+            <label for="description">Description:</label>
+            <input type="text" id="description"><br><br>
+            <label for="type">Type:</label>
+            <select id="type">
+                <option value="College">College</option>
+                <option value="Masters">Masters</option>
+                <option value="Doctorate">Doctorate</option>
+            </select><br><br>
+            <button id="saveProgram" class="btn btn-primary">Save Program</button>
+            <button id="cancel" class="btn btn-secondary">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Academic Year Modal -->
+    <div id="academicYearModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideAcademicYearModal()">&times;</span>
+            <h2>Add/Edit Academic Year</h2>
+            <label for="ayCode">AY Code:</label>
+            <input type="text" id="ayCode"><br><br>
+            <label for="yearFrom">Year From:</label>
+            <input type="number" id="yearFrom"><br><br>
+            <label for="yearTo">Year To:</label>
+            <input type="number" id="yearTo"><br><br>
+            <label for="semester">Semester:</label>
+            <input type="text" id="semester"><br><br>
+            <label for="status">Status:</label>
+            <input type="text" id="status"><br><br>
+            <button id="saveAcademicYear" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+
+    <script>
+        // Program Menu Click Event
+        document.getElementById('programMenu').addEventListener('click', function() {
+            var programContent = document.getElementById('programContent');
+            var academicYearContent = document.getElementById('academicYearContent');
+
+            // Show Program Content and hide Academic Year Content
+            if (programContent.style.display === 'none' || programContent.style.display === '') {
+                programContent.style.display = 'block';
+                academicYearContent.style.display = 'none';
+            } else {
+                programContent.style.display = 'none';
+            }
+        });
+
+        // Academic Year Menu Click Event
+        document.getElementById('academicYearMenu').addEventListener('click', function() {
+            var academicYearContent = document.getElementById('academicYearContent');
+            var programContent = document.getElementById('programContent');
+
+            // Show Academic Year Content and hide Program Content
+            if (academicYearContent.style.display === 'none' || academicYearContent.style.display === '') {
+                academicYearContent.style.display = 'block';
+                programContent.style.display = 'none';
+                renderAcademicYearTable();
+            } else {
+                academicYearContent.style.display = 'none';
+            }
+        });
+
+        // Modal logic for Program section
+        const modal = document.getElementById("programModal");
+        const btn = document.getElementById("addNew");
+        const span = document.getElementsByClassName("close")[0];
+        const saveBtn = document.getElementById("saveProgram");
+        const cancelBtn = document.getElementById("cancel");
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        cancelBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Save program data
+        saveBtn.addEventListener('click', function() {
+            const pcode = document.getElementById('pcode').value;
+            const description = document.getElementById('description').value;
+            const type = document.getElementById('type').value;
+
+            if (pcode && description && type) {
+                const programTableBody = document.querySelector('#programTable tbody');
+                const newRow = document.createElement('tr');
+                const rowCount = programTableBody.rows.length + 1;
+
+                newRow.innerHTML = `
+                    <td>${rowCount}</td>
+                    <td>${pcode}</td>
+                    <td>${description}</td>
+                    <td>${type}</td>
+                `;
+
+                programTableBody.appendChild(newRow);
+
+                // Clear the form
+                document.getElementById('pcode').value = '';
+                document.getElementById('description').value = '';
+                document.getElementById('type').value = 'College';
+
+                // Close the modal
+                modal.style.display = "none";
+            } else {
+                alert('Please fill all fields.');
+            }
+        });
+
+        // Optionally, handle the Create New and Close buttons for Academic Year
+        document.getElementById('createNew').addEventListener('click', function() {
+            showAcademicYearModal();
+        });
+
+        document.getElementById('close').addEventListener('click', function() {
+            var academicYearContent = document.getElementById('academicYearContent');
+            academicYearContent.style.display = 'none';
+        });
+
+        function showAcademicYearModal() {
+            var modal = document.getElementById("academicYearModal");
+            modal.style.display = "block";
+        }
+
+        function hideAcademicYearModal() {
+            var modal = document.getElementById("academicYearModal");
+            modal.style.display = "none";
+        }
+
+        function renderAcademicYearTable() {
+            var academicYearTableBody = document.getElementById('academicYearTableBody');
+            academicYearTableBody.innerHTML = `
+                <tr>
+                    <td>1</td>
+                    <td>2023-24</td>
+                    <td>2023</td>
+                    <td>2024</td>
+                    <td>Fall</td>
+                    <td>Active</td>
+                    <td><button onclick="editAcademicYear(1)">Edit</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2024-25</td>
+                    <td>2024</td>
+                    <td>2025</td>
+                    <td>Spring</td>
+                    <td>Inactive</td>
+                    <td><button onclick="editAcademicYear(2)">Edit</button></td>
+                </tr>
+            `;
+        }
+
+        function editAcademicYear(id) {
+            showAcademicYearModal();
+            // Add logic to populate the modal fields with existing data based on id
+        }
+    </script>
+
+</body>
+</html>
+
+

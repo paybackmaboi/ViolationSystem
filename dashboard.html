@@ -1,0 +1,142 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.css">
+    <title>Responsive Navbar with Modal</title>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="bclogo.png" alt="Benedicto College" class="logo">
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Admin</a></li>
+            <li><a href="#" id="studentMenu">Student</a></li> <!-- Updated to trigger Student content -->
+            <li><a href="#">Violation</a></li>
+            <li><a href="#" id="programMenu">Program</a></li>
+            <li><a href="#" id="academicYearMenu">Academic Year</a></li>
+            <li><a href="#">Section</a></li>
+            <li><a href="#">User Account</a></li>
+            <li><a href="index.html" class="logout">LOG OUT</a></li>
+        </ul>
+    </nav>
+
+    <div id="programContent" class="content" style="display: none;">
+        <button id="addNew" class="btn btn-primary">ADD NEW</button>
+        <table id="programTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Pcode</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be added dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    
+
+    <div id="academicYearContent" class="content" style="display: none;">
+        <h2>Academic Year</h2>
+        <table id="academicYearTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>AY CODE</th>
+                    <th>SEMESTER</th>
+                    <th>STATUS</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="academicYearTableBody">
+
+            </tbody>
+        </table>
+        <button id="createNew" class="btn btn-primary">Create New</button>
+        <button id="close" class="btn btn-secondary">Close</button>
+    </div>
+
+    <!-- Student Content -->
+    <div id="studentContent" class="content" style="display: none;"> <!-- Added Student Content -->
+        <button id="addNewStudent" class="btn btn-primary">ADD NEW STUDENT</button>
+        <table id="studentTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Program</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Program Modal -->
+    <div id="programModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Program</h2>
+            <form>
+                <label for="pcode">Program Code:</label>
+                <input type="text" id="pcode"><br><br>
+                <label for="description">Description:</label>
+                <input type="text" id="description"><br><br>
+                <label for="type">Type:</label>
+                <select id="type">
+                    <option value="College">College</option>
+                    <option value="SeniorHigh">SHS</option>
+                </select><br><br>
+                <button type="button" id="saveProgram" class="btn btn-primary">Save Program</button>
+                <button type="button" id="cancel" class="btn btn-secondary">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Academic Year Modal -->
+    <div id="academicYearModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add/Edit Academic Year</h2>
+            <label for="ayCode">AY Code:</label>
+            <input type="text" id="ayCode"><br><br>
+           
+            <label for="semester">Semester:</label>
+            <input type="text" id="semester"><br><br>
+            <label for="status">Status:</label>
+            <select id="status">
+                <option value="Open" selected>Open</option>
+                <option value="Closed">Closed</option>
+            </select><br><br>
+            <button id="saveAcademicYear" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+
+    
+    <div id="studentModal" class="modal"> <!-- Added Student Modal -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add/Edit Student</h2>
+            <label for="studentId">Student ID:</label>
+            <input type="text" id="studentId"><br><br>
+            <label for="studentName">Name:</label>
+            <input type="text" id="studentName"><br><br>
+            <label for="studentProgram">Program:</label>
+            <input type="text" id="studentProgram"><br><br>
+            <button id="saveStudent" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
